@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="src" path="src"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.junit.JUNIT_CONTAINER/4"/>
+	<classpathentry kind="lib" path="jarOfDB/mysql-connector-java-5.0.8-bin.jar"/>
+	<classpathentry kind="lib" path="jarOfJson/commons-beanutils-1.8.0.jar"/>
+	<classpathentry kind="lib" path="jarOfJson/commons-collections-3.2.jar"/>
+	<classpathentry kind="lib" path="jarOfJson/commons-lang-2.3.jar"/>
+	<classpathentry kind="lib" path="jarOfJson/commons-logging-1.0.4.jar"/>
+	<classpathentry kind="lib" path="jarOfJson/ezmorph-1.0.4.jar"/>
+	<classpathentry kind="lib" path="jarOfJson/json-lib-2.1-jdk13.jar"/>
+	<classpathentry kind="lib" path="jarOfPlugin/jxl.jar"/>
+	<classpathentry kind="lib" path="jarOfZip/ant-1.7.0.jar"/>
+	<classpathentry kind="lib" path="jarOfFile/jsoup-1.7.3.jar"/>
+	<classpathentry kind="lib" path="jarOfJson/gson-2.2.4.jar"/>
+	<classpathentry kind="lib" path="jarOfQuartz/c3p0-0.9.1.1.jar"/>
+	<classpathentry kind="lib" path="jarOfQuartz/log4j-1.2.16.jar"/>
+	<classpathentry kind="lib" path="jarOfQuartz/quartz-2.2.1.jar"/>
+	<classpathentry kind="lib" path="jarOfQuartz/quartz-jobs-2.2.1.jar"/>
+	<classpathentry kind="lib" path="jarOfQuartz/slf4j-api-1.6.6.jar"/>
+	<classpathentry kind="lib" path="jarOfQuartz/slf4j-log4j12-1.6.6.jar"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+	<classpathentry kind="output" path="bin"/>
+</classpath>
