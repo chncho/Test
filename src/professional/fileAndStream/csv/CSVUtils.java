@@ -3,9 +3,11 @@ package professional.fileAndStream.csv;
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.File;
+import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.FileReader;
 import java.io.IOException;
+import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
 import java.util.ArrayList;
 import java.util.List;
@@ -25,7 +27,7 @@ public class CSVUtils {
      * @param dataList 数据
      * @return
      */
-    public static boolean exportCsv(File file, List<String> dataList){
+    public static boolean exportCsv(File file, List<String> dataList,String encode){
         boolean isSucess=false;
         
         FileOutputStream out=null;
@@ -33,7 +35,7 @@ public class CSVUtils {
         BufferedWriter bw=null;
         try {
             out = new FileOutputStream(file);
-            osw = new OutputStreamWriter(out);
+            osw = new OutputStreamWriter(out,encode);
             bw =new BufferedWriter(osw);
             
             if(dataList!=null && !dataList.isEmpty()){
@@ -85,12 +87,16 @@ public class CSVUtils {
      * @param file csv文件(路径+文件)
      * @return
      */
-    public static List<String> importCsv(File file){
+    public static List<String> importCsv(File file,String encode){
         List<String> dataList=new ArrayList<String>();
         
         BufferedReader br=null;
         try { 
-            br = new BufferedReader(new FileReader(file));
+//            br = new BufferedReader(new FileReader(file));
+        	InputStreamReader insr = new InputStreamReader (new FileInputStream(file),encode);
+            br = new BufferedReader(
+            		insr
+            		);
             String line = ""; 
             while ((line = br.readLine()) != null) { 
                 dataList.add(line);

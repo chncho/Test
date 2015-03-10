@@ -13,15 +13,15 @@ import net.sf.json.JSONObject;
 public class BaiduLbsTest {
 
 	public static void main(String[] args) {
-//		GeocodingAPIv2_0Test();
-		GeocodingAPIv2_0TestFillProvCitySti();
+		GeocodingAPIv2_0Test();
+//		GeocodingAPIv2_0TestFillProvCitySti();
 //		System.out.println("\"\"".replaceAll("\"", ""));
 	}
 	
 	public static void GeocodingAPIv2_0TestFillProvCitySti(){
 		List<String> listOut = new ArrayList<String>();
 		
-		List<String> dataList=CSVUtils.importCsv(new File("D:/test/ljq_out.csv"));
+		List<String> dataList=CSVUtils.importCsv(new File("D:/test/ljq_out.csv"),"UTF-8");
         if(dataList!=null && !dataList.isEmpty()){
         	int i=0;//进度
             for(String data : dataList){
@@ -35,10 +35,18 @@ public class BaiduLbsTest {
                 			",\""+loc[5]+"\"" +
                 			","+data);
                 System.out.println("..."+i);//进度
+                System.out.println("\""+loc[0]+"\""+
+		                			",\""+loc[1]+"\"" +
+		                			",\""+loc[2]+"\"" +
+		                			",\""+loc[3]+"\"" +
+		                			",\""+loc[4]+"\"" +
+		                			",\""+loc[5]+"\"" +
+		                			","+data
+                			);
                 i++;
             }
             
-            boolean isSuccess=CSVUtils.exportCsv(new File("D:/test/ljq_out_fill.csv"), listOut);
+            boolean isSuccess=CSVUtils.exportCsv(new File("D:/test/ljq_out_fill.csv"), listOut,"UTF-8");
             System.out.println(isSuccess);
         }
 	}
@@ -102,18 +110,20 @@ public class BaiduLbsTest {
 	public static void GeocodingAPIv2_0Test(){
 		List<String> listOut = new ArrayList<String>();
 		
-		List<String> dataList=CSVUtils.importCsv(new File("D:/test/ljq.csv"));
+		List<String> dataList=CSVUtils.importCsv(new File("D:/test/ljq.csv"),"UTF-8");
         if(dataList!=null && !dataList.isEmpty()){
         	int i=0;//进度
             for(String data : dataList){
+            	System.out.println("==>"+data);
             	String addr = data.split(",")[1];
             	double[] loc = reqGeocodingAPIv2_0Test(addr);
                 listOut.add("\""+loc[0]+"\",\""+loc[1]+"\","+data);
                 System.out.println("..."+i);//进度
+                System.out.println("\""+loc[0]+"\",\""+loc[1]+"\","+data);
                 i++;
             }
             
-            boolean isSuccess=CSVUtils.exportCsv(new File("D:/test/ljq_out.csv"), listOut);
+            boolean isSuccess=CSVUtils.exportCsv(new File("D:/test/ljq_out.csv"), listOut,"UTF-8");
             System.out.println(isSuccess);
         }
 		

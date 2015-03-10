@@ -25,7 +25,7 @@ public class TestJsoup {
 			System.out.println("..."+i);
 		}
 		
-		CSVUtils.exportCsv(new File("D:/test/ljq.csv"), dataList);
+		CSVUtils.exportCsv(new File("D:/test/ljq.csv"), dataList,"UTF-8");
 		
 	}
 	public static void strechData(String url,List<String> dataList) throws IOException{

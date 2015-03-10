@@ -11,6 +11,7 @@ import javax.crypto.spec.DESKeySpec;
 import professional.encryption.rsa.Coder;
 
 
+
 /**
  * DES安全编码组件
  * 
@@ -52,6 +53,7 @@ public abstract class DESCoder extends Coder {
 	 * </code>
 	 */
 	public static final String ALGORITHM = "DES";
+	public static final String TRANSFORMATION = "DES/ECB/ISO10126Padding";//"DES/ECB/PKCS5Padding";NoPadding NoPadding
 
 	/**
 	 * 转换密钥<br>
@@ -82,7 +84,7 @@ public abstract class DESCoder extends Coder {
 	public static byte[] decrypt(byte[] data, String key) throws Exception {
 		Key k = toKey(decryptBASE64(key));
 
-		Cipher cipher = Cipher.getInstance(ALGORITHM);
+		Cipher cipher = Cipher.getInstance(TRANSFORMATION);//ALGORITHM);
 		cipher.init(Cipher.DECRYPT_MODE, k);
 
 		return cipher.doFinal(data);
@@ -98,8 +100,9 @@ public abstract class DESCoder extends Coder {
 	 */
 	public static byte[] encrypt(byte[] data, String key) throws Exception {
 		Key k = toKey(decryptBASE64(key));
-		Cipher cipher = Cipher.getInstance(ALGORITHM);
-		cipher.init(Cipher.ENCRYPT_MODE, k);
+		Cipher cipher = Cipher.getInstance(TRANSFORMATION);//TRANSFORMATION);//ALGORITHM);
+//		IvParameterSpec iv =  new IvParameterSpec(new byte[8]);//new IvParameterSpec(key.getBytes("UTF-8"));
+		cipher.init(Cipher.ENCRYPT_MODE, k);//,iv);
 
 		return cipher.doFinal(data);
 	}

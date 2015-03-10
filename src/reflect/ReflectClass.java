@@ -1,6 +1,7 @@
 package reflect;
 
 import java.lang.reflect.Field;
+import java.lang.reflect.InvocationTargetException;
 
 /**
  * 反射测试
@@ -9,7 +10,7 @@ import java.lang.reflect.Field;
  */
 public class ReflectClass {
 
-	public static void main(String[] args) throws IllegalArgumentException, IllegalAccessException {
+	public static void main(String[] args) throws IllegalArgumentException, IllegalAccessException, SecurityException, InvocationTargetException, NoSuchMethodException {
 		Person person = new Person();
 		person.setName("陈超");
 		person.setGender("男");
@@ -25,11 +26,15 @@ public class ReflectClass {
 	 * @throws IllegalArgumentException
 	 * @throws IllegalAccessException
 	 * @author 陈超
+	 * @throws NoSuchMethodException 
+	 * @throws InvocationTargetException 
+	 * @throws SecurityException 
 	 * @since Dec 19, 2012 11:16:42 AM
 	 * @update:[变更日期YYYY-MM-DD][更改人姓名][变更描述]
 	 */
-	public static String toString(Object obj) throws IllegalArgumentException, IllegalAccessException{
-		Class clazz = obj.getClass();
+	public static String toString(Object obj) throws IllegalArgumentException, IllegalAccessException, SecurityException, InvocationTargetException, NoSuchMethodException{
+		//此方法会报错，非一个文件的情况
+		/*Class clazz = obj.getClass();
 		StringBuffer sb = new StringBuffer();
 		
 		Field[] fields = clazz.getDeclaredFields();//包含私有
@@ -38,7 +43,20 @@ public class ReflectClass {
 		}
 		sb.replace(0, 1, "{");
 		sb.append("}");
-		return sb.toString();
+		return sb.toString();*/
+		//此方法可行
+		Class clazz = obj.getClass();
+		StringBuffer sb = new StringBuffer();
+		
+		Field[] fields = clazz.getDeclaredFields();//包含私有
+		for(Field f : fields){
+			
+			sb.append(","+f.getName()+":"+  clazz.getMethod("get"+f.getName().substring(0,1).toUpperCase()+f.getName().substring(1))
+					.invoke(obj));
+		}
+		sb.replace(0, 1, "{");
+		sb.append("}");
+		return sb.toString();/**/
 	}
 }
 

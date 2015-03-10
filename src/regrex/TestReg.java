@@ -10,11 +10,23 @@ public class TestReg {
 		System.out.println(a.contains("天天"));
 		System.out.println(a.matches("^天天*$"));
 		
+		{
 		System.out.println("=====================================================");
 		String s1 = "http://sports.sina.com.cn/j/2012-11-13/18216294422.shtml";
 		Matcher m = Pattern.compile("https?://.*?(?=/)").matcher(s1);
 		if(m.find()) {
 			System.out.println(m.group());
+		}
+		}
+		
+		{
+		System.out.println("=====================================================");
+		String s1 = "attachment; filename=\"4msWR51_VM0wNp0uZkgdAZ9BjwR2Gy40-of8sQPYPf5xae2kiRjFU9JbmtVvZBuk.jpg\"";
+		Matcher m = Pattern.compile("(filename=\")"+".*?(?=\")").matcher(s1);
+		if(m.find()) {
+			System.out.println(m.group());
+		}
+		System.out.println(s1.substring(s1.indexOf("filename=\"")+"filename=\"".length(),s1.length()-1));
 		}
 	}
 }
