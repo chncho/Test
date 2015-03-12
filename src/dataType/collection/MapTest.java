@@ -15,5 +15,7 @@ public class MapTest {
 		map.put("a", "a");
 		map.put("b", null);
 		map.put("c", str);
+		map.put("a", "e");
+		System.out.println(map);
 	}
 }
