@@ -5,7 +5,7 @@ import java.net.URLEncoder;
 
 
 public class Md5Test {
-
+ 
 	public static void main(String[] args) throws UnsupportedEncodingException {
 		String str = "6456C7FAC445F3C1C3E7F4405159D80E";
 		MD5 md5=new MD5();
