@@ -6,6 +6,10 @@ import java.util.regex.Pattern;
 public class TestReg {
 
 	public static void main(String[] args) {
+		{
+			
+			System.out.println(Pattern.matches("^((0\\d{2,3}))(\\d{7,8})$","0104444444"));
+		}
 		String a = "天天向上";
 		System.out.println(a.contains("天天"));
 		System.out.println(a.matches("^天天*$"));
